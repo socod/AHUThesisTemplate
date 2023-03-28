@@ -33,7 +33,7 @@ AHUThesisTemplate
 + LaTeX: 参看LaTeX模板示例Main.tex及相应插入章节tmp/*.tex。
 + 可以使用VSCode编辑器，安装插件LaTeX Workshop，直接运行命令 `xelatex(pdflatex)->bibtex->xelatex(pdflatex)*2`
 
-+ 欢迎同学们 [pull request](https://github.com/socod/AHUThesisTemplate/pulls)
++ 欢迎 [pull request](https://github.com/socod/AHUThesisTemplate/pulls)
 
 ## 我的环境
 
