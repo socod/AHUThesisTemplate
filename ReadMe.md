@@ -51,4 +51,4 @@ AHUThesisTemplate
 
 感谢[Monoceros393](https://github.com/Monoceros393)的鼓舞。
 
-同时，希望计算机学院的同志们多做点事儿。
+同时，希望安大计算机学院的同志们多做点事儿。
