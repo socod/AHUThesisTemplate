@@ -3,7 +3,6 @@
 *.fls
 *.log
 *.out
-*.pdf
 *.dvi
 *.docx
 *.xlsx
