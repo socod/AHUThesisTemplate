@@ -1,4 +1,4 @@
-% !TeX root = ../Template.tex
+% !TeX root = ../Main.tex
 % 本LaTeX模板的使用示例
 \chapter{示例}
 
@@ -314,7 +314,7 @@
 \centerline{-----------$\downarrow$-----------Space Check-----------$\downarrow$-----------}
 \begin{figure}[!h]
   \centering
-  \includegraphics[width=.5\textwidth]{pic/logo-buaa}
+  \includegraphics[width=.5\textwidth]{pic/logo-ahu}
   \bicaption{测试图片\\第二行题注}{Test Pic\\Sec Row}
   \label{fig:logo}
 \end{figure}
@@ -519,3 +519,81 @@
 我们在这儿插入一行字；
 
 我们在这儿再插入一行字；
+
+\section{代码环境}
+代码环境使用宏包\href{https://mirrors.sustech.edu.cn/CTAN/macros/latex/contrib/listings/listings.pdf}{listings}，代码格式设置用命令\verb|\lstset{}|，详细参数设置请参考用户手册。
+
+\begin{lstlisting}[caption1=搜索,caption2=search,label=listsearch]
+int binarysearch(const int *arr, int l, int r, int x)
+{
+    int mid = l + (r - l) / 2;
+
+    while (arr[mid] != x)
+    {
+        if (r <= l || r < 0)
+        return -1;
+|\label{line-9}|
+        if (arr[mid] > x)
+            // If element is smaller than middle
+            r = mid - 1;
+        else
+            // Else element is in right subarray
+            l = mid + 1;
+
+        mid = l + (r - l) / 2;
+    }
+    // When element is not present in array
+    return mid;
+}
+\end{lstlisting}
+
+如代码列表\ref{listsearch}在第\ref{line-9}行出现了跨页，另起一页情况下，可在跨页代码处使用环境逃逸，即使用命令：\verb|\Suppressnumber|，\verb|\Reactivatenumber|。
+
+例如，代码列表\ref{listmerge}在第\ref{merge-line14}行跨页，使用环境逃逸命令的结果：
+\begin{lstlisting}[caption1=合并,caption2=merge,label=listmerge]
+void merge(int *a, int l, int r, int n)
+{
+    int *b = (int *)malloc(n * sizeof(int)); /* dynamic memory must be freed */
+    int c = l;
+    int p1, p2;
+    p1 = l;
+    p2 = ((l + r) / 2) + 1;
+    while ((p1 < ((l + r) / 2) + 1) && (p2 < r + 1))
+    {
+        if (a[p1] <= a[p2])
+        {
+            b[c++] = a[p1];
+            p1++;
+        }|\label{merge-line14}||\Suppressnumber|
+\end{lstlisting}
+\begin{lstlisting}[firstnumber=last,stepnumber=1]
+|\hfill|$(\text{续代码列表}\ref{listmerge})$|\Reactivatenumber|
+        else
+        {
+            b[c++] = a[p2];
+            p2++;
+        }
+    }
+    if (p2 == r + 1)
+    {
+        while ((p1 < ((l + r) / 2) + 1))
+        {
+            b[c++] = a[p1];
+            p1++;
+        }
+    }
+    else
+    {
+        while ((p2 < r + 1))
+        {
+            b[c++] = a[p2];
+            p2++;
+        }
+    }
+
+    for (c = l; c < r + 1; c++) a[c] = b[c];
+
+    free(b);
+}
+\end{lstlisting}
+详细代码，可见文件sample.tex。

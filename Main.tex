@@ -1,0 +1,231 @@
+% buaa基于ctexbook模板
+% 模板选项:
+%======================
+% I.论文类型(thesis)
+%--------------------
+% a.学术硕士论文（master）[缺省值]
+% b.专业硕士论文（professional）
+% c.博士论文（doctor）
+%--------------------
+% II.密级(permission)
+%--------------------
+% a.公开（public）[缺省值]
+% b.内部（privacy）
+% c.秘密（secret=secret3）
+% c.1.秘密3年（secret3）
+% c.2.秘密5年（secret5）
+% c.3.秘密10年（secret10）
+% c.4.秘密永久（secret*）
+% d.机密（classified=classified5）
+% d.1.机密3年（classified3）
+% d.2.机密5年（classified5）
+% d.3.机密10年（classified10）
+% d.4.机密永久（classified*）
+% e.绝密（topsecret=topsecret10）
+% e.1.绝密3年（topsecret3）
+% e.2.绝密5年（topsecret5）
+% e.3.绝密10年（topsecret10）
+% e.4.绝密永久（topsecret*）
+%--------------------
+% III.打印设置(printtype)
+%--------------------
+% a.单面打印（oneside）[缺省值]
+% b.双面打印（twoside）
+%--------------------
+% IV.系统类型(ostype)
+%--------------------
+% a.win（oneside）[缺省值]
+% b.linux (linux)
+% c.mac (mac)
+%--------------------
+% V.ctexbook设置选项(<ctexbookoptions>)
+%--------------------
+% ...
+%======================
+% 其他说明:
+% 1. Mac系统请使用mac选项，并使用XeLaTeX编译。
+% 2. 可加入额外ctexbook文档类的选项，其将会被传递给ctexbook。
+%    例如：\documentclass[fontset=founder]{buaa}
+% 3. CTeX在Linux下默认使用Fandol字体，为避免某些生僻字无法显示，在系统已安装方正
+%    字体的前提下可通过fontset=founder选项常用方正字体。
+%=================================================================
+% buaa模板已内嵌以下LaTeX工具包:
+%--------------------
+% ifthen, etoolbox, titletoc, remreset,
+% geometry, fancyhdr, setspace,
+% float, graphicx, subfigure, epstopdf,
+% array, enumitem,
+% booktabs, longtable, multirow, caption,
+% listings, algorithm2e, amsmath, amsthm,
+% hyperref, pifont, color, soul,
+% ---
+% For Win: times
+% For Lin: newtxtext, newtxmath
+% For Mac: times, fontspec
+%--------------------
+% 请在此处添加额外工具包>>
+%=================================================================
+% buaa模板已内嵌以下LaTeX宏:
+%--------------------
+% \highlight{text} % 黄色高亮
+%--------------------
+% 请在此处添加自定义宏>>
+%%=================================================================
+
+\documentclass[master,public,twoside,win,AutoFakeBold]{buaa}
+\usepackage{tabularray}
+\UseTblrLibrary{siunitx}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{pdfpages}
+
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily\small,
+  commentstyle=\ttfamily,
+  linewidth=\linewidth,
+  frame=single,
+  showstringspaces=false,
+  columns=flexible,
+  language=C,
+  breaklines=true,
+  mathescape,
+  escapeinside=||
+}
+\let\origthelstnumber\thelstnumber
+\makeatletter
+\newcommand*\Suppressnumber{%
+  \lst@AddToHook{OnNewLine}{%
+    \let\thelstnumber\relax%
+     \advance\c@lstnumber-\@ne\relax%
+    }%
+}
+
+\newcommand*\Reactivatenumber{%
+  \lst@AddToHook{OnNewLine}{%
+   \let\thelstnumber\origthelstnumber%
+   \advance\c@lstnumber\@ne\relax}%
+}
+\makeatother
+
+%=================================================================
+% 开启/关闭引用编号颜色：参考文献，公式，图，表，算法 等……
+\refcolor{on}   % 开启: on[默认]; 关闭: off;
+
+% 摘要和正文从右侧页开始，单面打印请关闭
+\beginright{on} % 开启: on; 关闭: off[默认];
+
+%盲评模式，开启后不显示学校等信息 ，注意自行修改致谢和学术成果
+\blindmode{off}   % 开启: on; 关闭: off[默认];
+
+% 图标目录
+\Listfigtab{bi} % 启用: on[默认]; 双标题：bi; 关闭: off;
+
+% 空白页留字
+\emptypagewords{[ -- This page is a preset empty page -- ]}
+
+% 不显示超链接方框
+% \hypersetup{hidelinks}
+
+%=================================================================
+% 论文题目及副标题-{中文}{英文}
+\Title{机动战士驾驶}{Mobile Suit Driving}
+%\Subtitle{学位论文~\LaTeX{}模板}
+
+% 申请学位级别
+\Branch{ }
+% 研究方向
+\Field{ }
+
+% 院系,专业及研究方向
+\Department{机动战士驾驶}
+
+% 博士+学硕配置------------>
+% 一级学科/学科专业
+\Major{人机神经链接}
+% 二级学科
+\Majorsec{}
+% 学科专业
+\MasterMajor{}
+
+% 专硕配置------------>
+%研究方向
+\ProCategory{ }
+\ProField{ }
+\ProName{ }
+
+% 导师信息-{中文名}{英文名}{职称}
+\Tutor{李四}{LI Si}{教授}
+%\Cotutor{副导师姓名}{Cotutor}{高工}
+
+% 学生姓名-{中文名}{英文名}
+\Author{张三}{ZHANG Sang}
+% 论文编号
+\StudentID{}
+
+% 中图分类号
+\CLC{}
+
+% 时间节点-{月}{日}{年}
+%入学时间
+\DateEnroll{00}{00}{0000}
+%毕业时间
+\DateGraduate{00}{00}{0000}
+%论文提交日期
+\DateSubmit{00}{00}{0000}
+%论文答辩日期
+\DateDefence{00}{00}{0000}
+
+%%=================================================================
+% 摘要-{中文}{英文}
+\Abstract{%
+  中文摘要。
+  }{%
+  English abstract. 
+}
+% 关键字-{中文}{英文}
+\Keyword{%
+    关键词
+  }{%
+    keyword
+}
+
+
+\begin{document}
+
+% 绪论
+\input{Chapter_Introduction/Introduction}
+
+% 使用说明与示例 写论文可以删去该章
+\input{tmp/instruction}
+\input{tmp/sample}
+
+% 背景知识
+\input{Chapter_Preliminaries/Preliminaries}
+
+% 主体章节
+\input{Chapter_Core/Core}
+
+% 实验
+\input{Chapter_Experiment/Experiment}
+
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+% 总结
+\input{Chapter_Summary/Summary}
+
+% 参考文献
+% 2015版国标GBT7714-2015
+% 2005版国标GBT7714-2005
+\Bib{bst/GBT7714-2015}{reference}
+
+% 附录
+\input{Chapter_Appendix/Appendix}
+
+% 攻读学位期间成果
+\input{Chapter_Achieve/Achieve}
+
+% 致谢
+\input{Chapter_Acknowledge/Acknowledge}
+
+\end{document} 

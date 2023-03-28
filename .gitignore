@@ -1,37 +1,20 @@
-## Ignore Latex temporary file, build result,
-## and other generated files.
-# Latex temporary file.
 *.aux
-*.bbl
-*.blg
-*.idx
-*.ind
-*.lof
-*.lot
-*.out
-*.toc
-*.acn
-*.acr
-*.alg
-*.glg
-*.glo
-*.gls
-*.ist
+*.fdb_latexmk
 *.fls
 *.log
-*.fdb_latexm
+*.out
+*.pdf
+*.dvi
+*.docx
+*.xlsx
+*.doc
 *.synctex.gz
-
-# Latex build results.
-*-converted-to.pdf
-
-## User-specific files
-# Latex style files.
-# [Tt]ex[Ss]tyle/
-# [Ss]tyle/
-
-# Backup files.
-[Bb]ack[Uu]p/
-*.back
-*.bak
-*.*~
+*.bbl
+*.blg
+*.lot
+*.toc
+*.lol
+*.lof
+*.lof2
+*.lol2
+*.lot2

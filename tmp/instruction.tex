@@ -1,28 +1,22 @@
-% !TeX root = ../Template.tex
-% 本LaTeX模板的一般使用说明
-\chapter{说明}
+\chapter{使用说明}
+首先，感谢北京航空航天大学两位同志 \textbf{QiaoJF}, \textbf{WeiQM} 对于研究生学位论文\LaTeX{}模板的贡献\url{https://github.com/CheckBoxStudio/BUAAThesis}，本模板基于他们的工作进行了二创，并尽可能符合安徽大学研究生撰写学位论文的规定（2019年12月修订）的要求。
 
-Again，这是北航论文\LaTeX{}模板（\CTeX{}-Based）\BUAAThesis{}。
+基于对先行者劳动成果的尊重，模板名称、版本、库命名依旧使用标识\BUAAThesis{}。
 
-本\LaTeX{}模板为北航研究生学位论文模板，适用于理工类博士、硕士。本\LaTeX{}模板参考自2015年8月版北航《研究生手册》，根据2020年7月修订版调整，具体要求请参见各自的《手册》，最终成文格式需参考学院要求及打印方意见。本模板中大量内容和说明直接摘抄自《手册》（2015年8月版），基本覆盖了论文内容和格式方面的要求。
+同时，也要感谢安徽大学同志\href{https://github.com/Monoceros393/AHUThesis}{Monoceros393}最初对安大研究生论文模板写作的贡献。
 
-本模板已上传\href{https://github.com/CheckBoxStudio/BUAAThesis}{GitHub}，该仓库中同时也包含了相应的Word模板。
-
-%-----------------------------
 \section{宏包使用}
-
 请将以下文件与此LaTeX文件放在同一目录中：
 
 \begin{tabular}{ll}
- \verb|buaa.cls |                 & $\triangleright$ LaTeX宏模板文件 \\
+ \verb|buaa.cls|                 & $\triangleright$ LaTeX宏模板文件 \\
  \verb|bst/GBT7714-2005.bst|      & $\triangleright$ 国标参考文献BibTeX样式文件2005 \\
  \verb|bst/GBT7714-2015.bst|      & $\triangleright$ 国标参考文献BibTeX样式文件2015 \\
- \verb|pic/logo-buaa.eps|         & $\triangleright$ 论文封皮北航字样 \\
+ \verb|pic/logo-ahu.eps|          & $\triangleright$ 论文封皮安大校徽（较模糊）\\
  \verb|pic/head-master.eps|       & $\triangleright$ 论文封皮学术硕士学位论文标题\\
  \verb|pic/head-professional.eps| & $\triangleright$ 论文封皮专业硕士学位论文标题\\
  \verb|pic/head-doctor.eps|       & $\triangleright$ 论文封皮学术博士学位论文标题\\
- \verb|pic/head-prodoctor.eps|    & $\triangleright$ 论文封皮专业博士学位论文标题\\
- \verb|tex/*.tex|                 & $\triangleright$ 本模板样例中的独立章节\\
+ \verb|Chapter_*/*.tex|           & $\triangleright$ 本模板样例中的独立章节，使用命令 \verb|\input()|\\
 \end{tabular}\\
 
 通过 \verb|\documentclass[| \verb|<thesis>,| \verb|<permission>,| \verb|<printtype>,| \verb|<ostype>,| \verb|<ctexbookoptions>| \verb|]{buaa}|载入宏包：
@@ -30,8 +24,7 @@ Again，这是北航论文\LaTeX{}模板（\CTeX{}-Based）\BUAAThesis{}。
   \item[{\tt thesis} $\triangleright$]  论文类型(thesis)，可选值：\\
     a) 学术硕士论文（\verb|master|）[缺省值]\\
     b) 专业硕士论文（\verb|professional|）\\
-    c) 学术博士论文（\verb|doctor|）\\
-    d) 专业博士论文（\verb|prodoctor|）
+    c) 学术博士论文（\verb|doctor|）
   \item[{\tt permission} $\triangleright$] 密级(permission)，可选值： \\
     a) 公开（\verb|public|）[缺省值]\\
     b) 内部（\verb|privacy|）\\
@@ -79,7 +72,6 @@ For Mac: {\tt times}, {\tt fontspec}。
 模板已内嵌宏：\verb|\highlight{text}|（黄色高亮）。
 
 请统一使用UTF-8编码。
-
 
 
 %-----------------------------
@@ -130,16 +122,3 @@ For Mac: {\tt times}, {\tt fontspec}。
   \item[$\triangleright$] 浮动体与正文之间的距离是弹性的，根据内容调整，不太好控制；
   \item[$\triangleright$] 命令符与汉字之间请注意加空格以避免undefined错误（pdfLaTeX下好像一般不存在这个问题，主要在XeLaTeX编译环境下发生）；
 \end{itemize}
-
-%-----------------------------
-\section{ToDo}
-\begin{itemize}
-  \item[$\triangleright$] 数学环境的行间隔；
-  \item[$\triangleright$] 参考文献的行间隔；
-\end{itemize}
-
-%-----------------------------
-\section{意见及问题反馈}
-
-\indent E-mail：weiqm@buaa.edu.cn \\
-\indent GitHub：\href{https://github.com/CheckBoxStudio/BUAAThesis/issues}{https://github.com/CheckBoxStudio/BUAAThesis/issues}
